@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+<script type="text/javascript" src="/static/jquery.min.js"></script>
+<link href="/static/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+</head>
+<body>
+	<h1 class="text-center"
+		th:text="${user.id}==0?#{UserAdd}:#{UserUpdate}"></h1>
+	<form th:action="${user.id}==0?'/add':'/update'" method="post"
+		enctype="multipart/form-data" class="form-horizontal"
+		th:object="${user}">
+		<div class="form-group" th:hidden="${user.id}==0?'false':'true'">
+			<label for="id" class="col-sm-5 control-label">id</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="id" placeholder="id"
+					name="id" th:field="*{id}" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-5 control-label" th:text="#{name}"></label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="name"
+					th:placeholder="#{enterName}" name="name" th:field="*{name}" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="age" class="col-sm-5 control-label" th:text="#{age}"></label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="age"
+					th:placeholder="#{enterAge}" name="age" th:field="*{age}" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="mobile" class="col-sm-5 control-label"
+				th:text="#{mobile}"></label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="mobile"
+					th:placeholder="#{enterMobile}" name="mobile" th:field="*{mobile}" onblur="validatemobile(this.value);" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="file" class="col-sm-5 control-label"
+				th:text="#{icoUpload}"></label>
+			<div class="col-sm-2">
+				<input type="file" id="file" name="file" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-5 col-sm-2">
+				<button type="submit" class="btn btn-primary"
+					th:text="${user.id}==0?#{add}:#{update}"></button>
+				<button type="button" th:onclick="'backtoList()'"
+					class="btn btn-warning" th:text="#{backtoUserList}"></button>
+			</div>
+		</div>
+	</form>
+	<div th:each="err:${error}">
+	<h3 th:text="${err}" style="color: red;" class="text-center"></h3>
+	</div>
+</body>
+<script type="text/javascript">
+	function backtoList() {
+		window.location.href = "/backtoList";
+	}
+	function validatemobile(mobile) {
+		if (mobile.length == 0) {
+			alert('手机号码不能为空！');
+			return false;
+		}
+		if (mobile.length != 11) {
+			alert('请输入有效的手机号码，需是11位！');
+			return false;
+		}
+/* 
+		var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+		if (!myreg.test(mobile)) {
+			alert('请输入有效的手机号码！');
+			return false;
+		} */
+	}
+	
+</script>
+</html>
