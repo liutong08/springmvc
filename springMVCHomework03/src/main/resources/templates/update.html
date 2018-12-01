@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+<form action="/update" method="post" enctype="multipart/form-data">
+		<table border="1px">
+			<tr hidden="hidden">
+				<td style="text-align: right:">id:</td>
+				<td><input type="text" name="id" th:value="${session.user.id}" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right:">姓名:</td>
+				<td><input type="text" name="name" th:value="${session.user.name}" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right:">年龄:</td>
+				<td><input type="text" name="age" th:value="${session.user.age}" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right:">手机号码:</td>
+				<td><input type="text" name="mobile" th:value="${session.user.mobile}" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right:">头像上传:</td>
+				<td><!-- <img th:src="${session.user.path}" style="width: 50px; height: 50px;" /> --><input type="file" name="file"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" th:value="修改" />
+					<input type="button" th:onclick="'backtoList()'" value="返回用户列表" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+<script type="text/javascript">
+function backtoList(){
+	window.location.href="/backtoList";
+}
+</script>
+</html>
