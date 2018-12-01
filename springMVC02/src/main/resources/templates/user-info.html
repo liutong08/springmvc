@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+<h1>object *{} 形式</h1>
+<form th:object="${user}">
+姓名：<input type="text" name="name" th:value="${user.name }" th:field="*{name}" value="name"></input><br></br>
+年龄：<input type="text" name="age" th:value="${user.age }" th:field="*{age}" value="age"></input><br></br>
+省份：<input type="text" name="province" th:value="${user.province }" th:field="*{province}" value="province"></input><br></br>
+</form>
+<h1>value${}形式</h1>
+<form>
+姓名：<input type="text" name="name" th:value="${user.name }" value="name"></input><br></br>
+年龄：<input type="text" name="age" th:value="${user.age }" value="age"></input><br></br>
+省份：<input type="text" name="province" th:value="${user.province }" value="province"></input><br></br>
+</form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+<form action="/info" method="post">
+姓名：<input type="text" name="name"></input><br></br>
+年龄：<input type="text" name="age"></input><br></br>
+省份：<input type="text" name="province"></input><br></br>
+<input type="submit" th:value="submit" value="提交"></input>
+</form>
+</body>
+</html>
